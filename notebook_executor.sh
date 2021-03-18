@@ -1,6 +1,8 @@
 #!/bin/bash
 python3 -m pip install -U pip setuptools 
 python3 -m pip install -U papermill[all]
+conda install nb_conda_kernels
+conda update nb_conda nb_conda_kernels nb_anacondacloud
 readonly INPUT_NOTEBOOK_GCS_FILE=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/input_notebook -H "Metadata-Flavor: Google")
 readonly OUTPUT_NOTEBOOK_GCS_FOLDER=$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/output_notebook -H "Metadata-Flavor: Google")
 readonly PARAMETERS_GCS_FILE=$(curl --fail http://metadata.google.internal/computeMetadata/v1/instance/attributes/parameters_file -H "Metadata-Flavor: Google")
